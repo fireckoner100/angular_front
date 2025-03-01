@@ -26,7 +26,7 @@ export class SignupComponent {
         name: ['', [Validators.required, Validators.minLength(3)]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
-        password_confirmation: ['', [Validators.required]],
+        password_confirmation: ['', [Validators.required, Validators.minLength(6)]],
       },
       { validators: this.passwordsMatchValidator }
     );
