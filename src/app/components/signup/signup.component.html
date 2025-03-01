@@ -52,7 +52,7 @@
                     <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password"
                       id="password" placeholder="Password">
                     <label for="password" class="form-label">Password</label>
-                    <!-- 🔥 Botón para mostrar/ocultar contraseña -->
+                    <!-- Botón para mostrar/ocultar contraseña -->
                     <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y me-2"
                       (click)="togglePasswordVisibility('password')" style="border: none; background: none;">
                       <i [class]="showPassword ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
@@ -95,6 +95,10 @@
                       {{ loading ? 'Registering...' : 'Sign Up' }}
                     </button>
                   </div>
+                </div>
+
+                <div class="col-12">
+                  <a href="/" class="text-decoration-none"><i class="fas fa-arrow-left"></i> Return to login</a>
                 </div>
 
               </div>

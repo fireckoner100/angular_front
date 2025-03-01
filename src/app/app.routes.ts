@@ -9,40 +9,33 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { SignupComponent } from './components/signup/signup.component';
 
 export const routes: Routes = [
-  // Ruta pública para el login SIN authGuard
+  
   { path: '', component: LoginComponent, canActivate: [authGuard], },
   { path: 'register', component: SignupComponent },
-
   { path: '404', component: NotfoundComponent},
-
-  // Ruta protegida con AdminLayout
   {
-    path: 'dashboard',  // 🔹 Prefijo para rutas de administración
+    path: 'dashboard',
     component: AdminLayoutComponent,
-    canActivate: [authGuard], // Protege las rutas internas
+    canActivate: [authGuard],
     children: [
       { path: '', component: DashboardComponent },
     ]
   },
-
   {
-    path: 'users',  // 🔹 Prefijo para rutas de administración
+    path: 'users',
     component: AdminLayoutComponent,
-    canActivate: [authGuard], // Protege las rutas internas
+    canActivate: [authGuard],
     children: [
-      { path: '', component: UsersComponent } // Puedes cambiar este componente si es necesario
+      { path: '', component: UsersComponent } 
     ]
   },
-
   {
-    path: 'tasks',  // 🔹 Prefijo para rutas de administración
+    path: 'tasks',
     component: AdminLayoutComponent,
-    canActivate: [authGuard], // Protege las rutas internas
+    canActivate: [authGuard],
     children: [
-      { path: '', component: TaskListComponent } // Puedes cambiar este componente si es necesario
+      { path: '', component: TaskListComponent }
     ]
   },
-
-  // Redirección por defecto si la ruta no existe
   { path: '**', redirectTo: '/404', pathMatch: 'full' }
 ];

@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-confirm-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule], // 👈 Importamos los módulos necesarios
+  imports: [CommonModule, MatDialogModule, MatButtonModule],
   template: `
     <h2 mat-dialog-title>{{ data.title }}</h2>
     <mat-dialog-content>
@@ -25,10 +25,10 @@ export class ConfirmDialogComponent {
   ) {}
 
   onCancel(): void {
-    this.dialogRef.close(false); // Retorna false si cancela
+    this.dialogRef.close(false);
   }
 
   onConfirm(): void {
-    this.dialogRef.close(true); // Retorna true si confirma
+    this.dialogRef.close(true);
   }
 }

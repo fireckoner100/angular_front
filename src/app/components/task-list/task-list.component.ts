@@ -50,7 +50,7 @@ export class TaskListComponent implements OnInit {
   loadTasks() {
     this.taskService.getTasks().subscribe(tasks => {
       this.tasks = tasks;
-      this.applyFilter(); // Aplicar filtro al cargar
+      this.applyFilter();
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -70,7 +70,7 @@ export class TaskListComponent implements OnInit {
     const updatedTask = { ...task, completed: !task.completed };
     this.taskService.updateTask(task.id!, updatedTask).subscribe(() => {
       task.completed = !task.completed;
-      this.applyFilter(); // Aplicar el filtro después de actualizar el estado
+      this.applyFilter();
     });
   }
 
@@ -100,7 +100,7 @@ export class TaskListComponent implements OnInit {
       if (confirmed) {
         this.taskService.deleteTask(id).subscribe(() => {
           this.tasks = this.tasks.filter(task => task.id !== id);
-          this.applyFilter(); // Aplicar filtro tras eliminar la tarea
+          this.applyFilter();
         });
       }
     });

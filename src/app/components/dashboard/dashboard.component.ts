@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('token'); // Elimina el token de sesión
-    this.router.navigate(['/login']); // Redirige al login
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

@@ -34,7 +34,6 @@ export class TaskDialogComponent {
       completed: [this.task?.completed || false]
     });
 
-    // Forzar validación inicial
     this.taskForm.updateValueAndValidity();
   }
 
