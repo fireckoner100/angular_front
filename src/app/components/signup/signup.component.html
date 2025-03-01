@@ -1,0 +1,109 @@
+<section class="bg-light py-3 py-md-5 vh-100 d-flex align-items-center justify-content-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+        <div class="card border border-light-subtle rounded-3 shadow-sm">
+          <div class="card-body p-3 p-md-4 p-xl-5">
+            <div class="text-center mb-3">
+              <img src="assets/img/login-logo.svg" alt="BootstrapBrain Logo" width="175" height="57">
+            </div>
+            <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Create an account</h2>
+
+            <!-- Formulario -->
+            <form [formGroup]="signupForm" (ngSubmit)="register()">
+              <p class="alert alert-danger text-center" *ngIf="errorMessage">{{ errorMessage }}</p>
+              <p class="alert alert-success text-center" *ngIf="successMessage">{{ successMessage }}</p>
+
+              <div class="row gy-2 overflow-hidden">
+                <!-- Name -->
+                <div class="col-12">
+                  <div class="form-floating mb-0">
+                    <input type="text" class="form-control" formControlName="name" id="name" placeholder="John Doe">
+                    <label for="name" class="form-label">Full Name</label>
+                  </div>
+                  <small class="text-danger"
+                    *ngIf="signupForm.controls['name'].invalid && signupForm.controls['name'].touched">
+                    <span *ngIf="signupForm.controls['name'].errors?.['required']">Name is
+                      required.</span>
+                    <span *ngIf="signupForm.controls['name'].errors?.['minlength']">Name must be at
+                      least 3 characters.</span>
+                  </small>
+                </div>
+
+                <!-- Email -->
+                <div class="col-12">
+                  <div class="form-floating mb-0">
+                    <input type="email" class="form-control" formControlName="email" id="email"
+                      placeholder="name@example.com">
+                    <label for="email" class="form-label">Email</label>
+                  </div>
+                  <small class="text-danger"
+                    *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched">
+                    <span *ngIf="signupForm.controls['email'].errors?.['required']">Email is
+                      required.</span>
+                    <span *ngIf="signupForm.controls['email'].errors?.['email']">Invalid email
+                      format.</span>
+                  </small>
+                </div>
+
+                <!-- Password -->
+                <div class="col-12">
+                  <div class="form-floating mb-0 position-relative">
+                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password"
+                      id="password" placeholder="Password">
+                    <label for="password" class="form-label">Password</label>
+                    <!-- 🔥 Botón para mostrar/ocultar contraseña -->
+                    <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y me-2"
+                      (click)="togglePasswordVisibility('password')" style="border: none; background: none;">
+                      <i [class]="showPassword ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
+                    </button>
+                  </div>
+                  <small class="text-danger"
+                    *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched">
+                    <span *ngIf="signupForm.controls['password'].errors?.['required']">Password is required.</span>
+                    <span *ngIf="signupForm.controls['password'].errors?.['minlength']">Password must be at least 6
+                      characters.</span>
+                  </small>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="col-12">
+                  <div class="form-floating mb-0 position-relative">
+                    <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control"
+                      formControlName="password_confirmation" id="password_confirmation" placeholder="Confirm Password">
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <!-- Botón para mostrar/ocultar confirm password -->
+                    <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y me-2"
+                      (click)="togglePasswordVisibility('password_confirmation')"
+                      style="border: none; background: none;">
+                      <i [class]="showConfirmPassword ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
+                    </button>
+                  </div>
+                  <small class="text-danger"
+                    *ngIf="signupForm.controls['password_confirmation'].invalid && signupForm.controls['password_confirmation'].touched">
+                    <span *ngIf="signupForm.controls['password_confirmation'].errors?.['required']">Confirmation is
+                      required.</span>
+                    <span *ngIf="signupForm.errors?.['mismatch']">Passwords do not match.</span>
+                  </small>
+                </div>
+
+
+                <!-- Submit Button -->
+                <div class="col-12">
+                  <div class="d-grid my-3">
+                    <button class="btn btn-primary btn-lg" [disabled]="signupForm.invalid || loading" type="submit">
+                      {{ loading ? 'Registering...' : 'Sign Up' }}
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

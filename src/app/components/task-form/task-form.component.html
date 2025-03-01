@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-title>Agregar Nueva Tarea</mat-card-title>
+    <form [formGroup]="taskForm" (ngSubmit)="submitForm()">
+      <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+  
+      <mat-checkbox formControlName="completed">Completado</mat-checkbox>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">
+        Guardar
+      </button>
+    </form>
+  </mat-card>
+  
